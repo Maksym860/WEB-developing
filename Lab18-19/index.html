@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Інтернет-магазин "TechShop"</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Інтернет-магазин "TechShop"</h1>
+        </header>
+
+        <main class="content">
+            <!-- Стовпчик товарів -->
+            <section class="products">
+                <h2>Товари</h2>
+                <div class="products-grid">
+                    <!-- Товар 1 -->
+                    <div class="card" data-id="1">
+                        <img src="https://elmir.ua/img/og-p-91456/0/0/elmir.jpg" 
+                             alt="Ноутбук" class="product-img">
+                        <h3 class="item-title">Ноутбук Lenovo IdeaPad</h3>
+                        <p class="product-description">15.6" FHD, Intel Core i5, 8GB RAM, 512GB SSD</p>
+                        <div class="price-info">
+                            <div class="price">
+                                <span class="price_currency">15,000</span> грн
+                            </div>
+                            <div class="price_weight" data-items-in-box="1">1 шт.</div>
+                        </div>
+                        <div class="counter-wrapper">
+                            <button class="control" data-action="minus">-</button>
+                            <div class="current" data-counter>1</div>
+                            <button class="control" data-action="plus">+</button>
+                        </div>
+                        <button data-cart type="button" class="add-to-cart">+ у кошик</button>
+                    </div>
+
+                    <!-- Товар 2 -->
+                    <div class="card" data-id="2">
+                        <img src="https://hotline.ua/img/uploads/clients/66d5c952af7df7.84970172=smartfonu_ta_mobilni_telefonu.jpg" 
+                             alt="Смартфон" class="product-img">
+                        <h3 class="item-title">Смартфон Samsung Galaxy</h3>
+                        <p class="product-description">6.5" AMOLED, 128GB, 48MP камера</p>
+                        <div class="price-info">
+                            <div class="price">
+                                <span class="price_currency">8,000</span> грн
+                            </div>
+                            <div class="price_weight" data-items-in-box="1">1 шт.</div>
+                        </div>
+                        <div class="counter-wrapper">
+                            <button class="control" data-action="minus">-</button>
+                            <div class="current" data-counter>1</div>
+                            <button class="control" data-action="plus">+</button>
+                        </div>
+                        <button data-cart type="button" class="add-to-cart">+ у кошик</button>
+                    </div>
+
+                    <!-- Товар 3 -->
+                    <div class="card" data-id="3">
+                        <img src="https://skay.ua/265164-thickbox_default/besprovodnye-naushniki-apple-airpods-max-usb-c-purple-mww83.jpg" 
+                             alt="Навушники" class="product-img">
+                        <h3 class="item-title">Навушники Sony WH-1000XM4</h3>
+                        <p class="product-description">Бездротові, шумозаглушення, 30 год роботи</p>
+                        <div class="price-info">
+                            <div class="price">
+                                <span class="price_currency">2,500</span> грн
+                            </div>
+                            <div class="price_weight" data-items-in-box="1">1 шт.</div>
+                        </div>
+                        <div class="counter-wrapper">
+                            <button class="control" data-action="minus">-</button>
+                            <div class="current" data-counter>1</div>
+                            <button class="control" data-action="plus">+</button>
+                        </div>
+                        <button data-cart type="button" class="add-to-cart">+ у кошик</button>
+                    </div>
+
+                    <!-- Товар 4 -->
+                    <div class="card" data-id="4">
+                        <img src="https://i.siteapi.org/ngeC5OKJOh3EwDDebJjixpJGvuc=/0x0:450x510/s.siteapi.org/d725e5897e5dde0/img/w7vunv7165ckwo8c8cg4s0g40css4g" 
+                             alt="Планшет" class="product-img">
+                        <h3 class="item-title">Планшет Apple iPad Air</h3>
+                        <p class="product-description">10.9" Retina, A14 Bionic, 64GB, Wi-Fi</p>
+                        <div class="price-info">
+                            <div class="price">
+                                <span class="price_currency">18,500</span> грн
+                            </div>
+                            <div class="price_weight" data-items-in-box="1">1 шт.</div>
+                        </div>
+                        <div class="counter-wrapper">
+                            <button class="control" data-action="minus">-</button>
+                            <div class="current" data-counter>1</div>
+                            <button class="control" data-action="plus">+</button>
+                        </div>
+                        <button data-cart type="button" class="add-to-cart">+ у кошик</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Стовпчик кошика -->
+            <section class="cart">
+                <h2>Ваше замовлення</h2>
+                <div class="cart-wrapper" id="cartWrapper">
+                    <!-- Товари з'являться тут -->
+                    <p class="empty-cart">Кошик порожній</p>
+                </div>
+                <div class="cart-total">
+                    <p>Загальна сума: <span id="totalPrice">0</span> грн</p>
+                    <button id="clearCart" class="clear-cart-btn">Очистити кошик</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Інтернет-магазин "TechShop". Всі права захищені.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
