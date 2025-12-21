@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практична робота 9 - Робота з формами в JS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        select {
+            width: 200px;
+            padding: 8px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 10px 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .output {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+        }
+        .info {
+            background-color: #e7f3fe;
+            border-left: 4px solid #2196F3;
+            padding: 10px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Практична робота 9</h1>
+    <p><strong>Робота з формами в JavaScript</strong></p>
+    
+    <div class="info">
+        <p><strong>Початковий стан:</strong></p>
+        <p>Створено &lt;select&gt; з двома опціями:</p>
+        <ul>
+            <li>Рок (value="rock")</li>
+            <li>Блюз (value="blues") - обрана за замовчуванням</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Вибір жанру музики:</h2>
+        
+        <select id="genres">
+            <option value="rock">Рок</option>
+            <option value="blues" selected>Блюз</option>
+        </select>
+        
+        <div>
+            <button id="showSelectedBtn">Показати обрану опцію</button>
+            <button id="addClassicBtn">Додати класику та вибрати</button>
+            <button id="resetBtn">Скинути до початкового стану</button>
+        </div>
+        
+        <div class="output" id="output">
+            <!-- Тут будуть виводитися результати -->
+        </div>
+    </div>
+
+    <script>
+        // Отримуємо посилання на елементи
+        const genresSelect = document.getElementById('genres');
+        const outputDiv = document.getElementById('output');
+        const showSelectedBtn = document.getElementById('showSelectedBtn');
+        const addClassicBtn = document.getElementById('addClassicBtn');
+        const resetBtn = document.getElementById('resetBtn');
+
+        // Функція для виведення обраної опції
+        function showSelectedOption() {
+            const selectedOption = genresSelect.options[genresSelect.selectedIndex];
+            outputDiv.innerHTML = `
+                <p><strong>Обрана опція:</strong></p>
+                <p>Значення: <code>${selectedOption.value}</code></p>
+                <p>Текст: <strong>${selectedOption.text}</strong></p>
+                <p>Індекс: ${genresSelect.selectedIndex}</p>
+            `;
+        }
+
+        // Функція для додавання нової опції "Класика" та вибору її
+        function addClassicOption() {
+            // Перевіряємо, чи вже існує опція "classic"
+            const existingOptions = Array.from(genresSelect.options);
+            const classicExists = existingOptions.some(option => option.value === 'classic');
+            
+            if (!classicExists) {
+                // Створюємо нову опцію
+                const classicOption = new Option('Класика', 'classic', false, true);
+                
+                // Додаємо опцію до select
+                genresSelect.add(classicOption);
+                
+                outputDiv.innerHTML = `
+                    <p><strong>Успішно додано нову опцію:</strong></p>
+                    <p>Додано опцію: <code>&lt;option value="classic"&gt;Класика&lt;/option&gt;</code></p>
+                    <p>Опція "Класика" тепер обрана.</p>
+                `;
+            } else {
+                // Якщо опція вже існує, просто робимо її обраною
+                for (let option of genresSelect.options) {
+                    option.selected = (option.value === 'classic');
+                }
+                
+                outputDiv.innerHTML = `
+                    <p>Опція "Класика" вже існує і тепер обрана.</p>
+                `;
+            }
+            
+            // Показуємо поточну обрану опцію
+            setTimeout(showSelectedOption, 100);
+        }
+
+        // Функція для скидання до початкового стану
+        function resetToInitialState() {
+            // Очищаємо всі опції
+            genresSelect.innerHTML = '';
+            
+            // Додаємо початкові опції
+            const rockOption = new Option('Рок', 'rock');
+            const bluesOption = new Option('Блюз', 'blues', false, true);
+            
+            genresSelect.add(rockOption);
+            genresSelect.add(bluesOption);
+            
+            outputDiv.innerHTML = `
+                <p><strong>Стан скинуто до початкового:</strong></p>
+                <ul>
+                    <li>Рок (value="rock")</li>
+                    <li>Блюз (value="blues") - обрана</li>
+                </ul>
+            `;
+        }
+
+        // Додаємо обробники подій для кнопок
+        showSelectedBtn.addEventListener('click', showSelectedOption);
+        addClassicBtn.addEventListener('click', addClassicOption);
+        resetBtn.addEventListener('click', resetToInitialState);
+
+        // Додаємо обробник зміни вибору в select
+        genresSelect.addEventListener('change', showSelectedOption);
+
+        // Показуємо початкову обрану опцію при завантаженні сторінки
+        window.addEventListener('DOMContentLoaded', () => {
+            outputDiv.innerHTML = `
+                <p><strong>Початковий стан:</strong></p>
+                <p>Обрана опція за замовчуванням: <strong>Блюз</strong> (value="blues")</p>
+                <p>Натисніть кнопку "Показати обрану опцію" для деталей.</p>
+            `;
+        });
+
+        // Додаткова функція для показу всіх опцій (для навчальних цілей)
+        function showAllOptions() {
+            const options = Array.from(genresSelect.options);
+            let optionsHTML = '<p><strong>Всі опції:</strong></p><ul>';
+            
+            options.forEach((option, index) => {
+                optionsHTML += `
+                    <li>
+                        Індекс: ${index}, 
+                        Значення: <code>${option.value}</code>, 
+                        Текст: "${option.text}", 
+                        Обрана: ${option.selected ? '✓' : '✗'}
+                    </li>
+                `;
+            });
+            
+            optionsHTML += '</ul>';
+            outputDiv.innerHTML = optionsHTML;
+        }
+
+        // Додаємо кнопку для показу всіх опцій
+        const showAllBtn = document.createElement('button');
+        showAllBtn.textContent = 'Показати всі опції';
+        showAllBtn.addEventListener('click', showAllOptions);
+        
+        // Вставляємо кнопку після контейнера
+        document.querySelector('.container').appendChild(showAllBtn);
+    </script>
+</body>
+</html>
