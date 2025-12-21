@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практична робота 10 - JavaScript та HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .task {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .task h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .example {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .code {
+            flex: 1;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-width: 300px;
+        }
+        .result {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            min-width: 300px;
+        }
+        .form-section {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border-left: 4px solid #3498db;
+            display: none;
+        }
+        .error {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .success {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .quote {
+            font-style: italic;
+            color: #7f8c8d;
+            border-left: 4px solid #2c3e50;
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+        .author {
+            text-align: right;
+            font-weight: bold;
+            color: #34495e;
+        }
+    </style>
+</head>
+<body>
+    <h1>Практична робота 10</h1>
+    <p>Робота з HTML об'єктами, відображення сторінки та робота з формами в JavaScript</p>
+
+    <!-- Завдання 1 -->
+    <div class="task">
+        <h2>Завдання 1. Реалізувати приклади роботи з HTML-об'єктами</h2>
+        
+        <div class="example">
+            <div class="code">
+                <h3>Код:</h3>
+                <pre>
+&lt;div id="name1"&gt;&lt;/div&gt;
+&lt;div id="name2"&gt;&lt;/div&gt;
+&lt;div id="name3"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+// Приклад 1: innerHTML
+let N1 = document.getElementById("name1");
+N1.innerHTML = "My name, &lt;b&gt;Olena&lt;/b&gt;";
+
+// Приклад 2: innerText
+let N2 = document.getElementById("name2");
+N2.innerText = "My name, &lt;b&gt;Olena&lt;/b&gt;";
+
+// Приклад 3: style
+let N3 = document.getElementById("name3");
+N3.style.color = "blue";
+N3.style.background = "yellow";
+N3.textContent = "Стилізований текст";
+&lt;/script&gt;
+                </pre>
+            </div>
+            <div class="result">
+                <h3>Результат:</h3>
+                <div id="name1"></div>
+                <div id="name2"></div>
+                <div id="name3"></div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="code">
+                <h3>Код:</h3>
+                <pre>
+&lt;p id="new"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+document.getElementById("new").innerHTML = "New text";
+&lt;/script&gt;
+                </pre>
+            </div>
+            <div class="result">
+                <h3>Результат:</h3>
+                <p id="new"></p>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="code">
+                <h3>Код:</h3>
+                <pre>
+&lt;ol&gt;
+  &lt;li&gt;Oleg&lt;/li&gt;
+  &lt;li&gt;Anna&lt;/li&gt;
+  &lt;li&gt;Natali&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script&gt;
+let M = document.getElementsByTagName("li");
+for(let i = 0; i < M.length; i++) {
+    M[i].style.fontSize = "40px";
+}
+&lt;/script&gt;
+                </pre>
+            </div>
+            <div class="result">
+                <h3>Результат:</h3>
+                <ol>
+                    <li>Oleg</li>
+                    <li>Anna</li>
+                    <li>Natali</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="code">
+                <h3>Код:</h3>
+                <pre>
+&lt;ol class="L"&gt;
+  &lt;li&gt;Oleg&lt;/li&gt;
+  &lt;li&gt;Anna&lt;/li&gt;
+  &lt;li&gt;Natali&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script&gt;
+let M = document.getElementsByClassName("L");
+for(let i = 0; i < M.length; i++) {
+    M[i].style.fontSize = "40px";
+}
+&lt;/script&gt;
+                </pre>
+            </div>
+            <div class="result">
+                <h3>Результат:</h3>
+                <ol class="L">
+                    <li>Oleg</li>
+                    <li>Anna</li>
+                    <li>Natali</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Завдання 2 -->
+    <div class="task">
+        <h2>Завдання 2. Відобразити сторінку за зразком</h2>
+        
+        <div class="quote">
+            "Хвала шаленцям! Бунтівникам, баламутам, невдахам; тим, хто завжди невчасно й не до ладу. Тим, хто бачить світ інакше. Вони не дотримуються правил. Сміються над засадами. Можна цитувати їх, сперечатися з ними, прославляти або проклинати. Але ігнорувати їх неможливо. Даже вони несуть зміни. Штовхають людство вперед. І мехай хтось каже: безумці, ми кажемо: генії. Адже тільки божевільний вірить, що може змінити світ, — і лише тому змінює його!"
+            <div class="author">Стів Джобс</div>
+        </div>
+        
+        <h3>Перед вами - найкращий і найповніший в мережі підручник по JavaScript українською мовою</h3>
+        <p>З найбільшого і найвідомішого у світі Інтернет-ресурсу по вивченню вебтехнологій - сайту W3Schools.com.</p>
+        
+        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+            <p><strong>JavaScript - це найпопулярніша мова програмування у світі.</strong></p>
+            <p><strong>JavaScript - це мова програмування HTML-сторінок та Web.</strong></p>
+            <p><strong>JavaScript - це мова програмування, яку досить легко вивчити.</strong></p>
+        </div>
+        
+        <p>Цей підручник навчить вас мові програмування JavaScript від базового рівня до розширеного.</p>
+    </div>
+
+    <!-- Завдання 3 -->
+    <div class="task">
+        <h2>Завдання 3. Робота з формами - власний проект</h2>
+        
+        <div class="form-section">
+            <h3>Форма реєстрації студента</h3>
+            
+            <form id="studentForm" onsubmit="return validateForm(event)">
+                <div class="form-group">
+                    <label for="fullName">Повне ім'я:</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Введіть ваше повне ім'я">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Електронна пошта:</label>
+                    <input type="email" id="email" name="email" placeholder="example@domain.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+380 XX XXX XX XX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="faculty">Факультет:</label>
+                    <select id="faculty" name="faculty">
+                        <option value="">Оберіть факультет</option>
+                        <option value="cs">Комп'ютерні науки</option>
+                        <option value="engineering">Інженерія</option>
+                        <option value="business">Бізнес-адміністрування</option>
+                        <option value="arts">Мистецтва</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Курс:</label>
+                    <div>
+                        <input type="radio" id="course1" name="course" value="1">
+                        <label for="course1" style="display: inline;">1 курс</label>
+                        
+                        <input type="radio" id="course2" name="course" value="2">
+                        <label for="course2" style="display: inline;">2 курс</label>
+                        
+                        <input type="radio" id="course3" name="course" value="3">
+                        <label for="course3" style="display: inline;">3 курс</label>
+                        
+                        <input type="radio" id="course4" name="course" value="4">
+                        <label for="course4" style="display: inline;">4 курс</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="about">Про себе:</label>
+                    <textarea id="about" name="about" rows="4" placeholder="Розкажіть трохи про себе..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <input type="checkbox" id="agreement" name="agreement">
+                    <label for="agreement" style="display: inline;">Я погоджуюся з обробкою персональних даних</label>
+                </div>
+                
+                <button type="submit">Надіслати форму</button>
+                <button type="button" onclick="clearForm()">Очистити форму</button>
+                <button type="button" onclick="showData()">Показати дані</button>
+            </form>
+            
+            <div id="formOutput" class="output">
+                <!-- Тут будуть виводитися результати -->
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 15px; background-color: #f1f8e9; border-radius: 5px;">
+            <h4>Приклад автоматичного створення та відправки форми:</h4>
+            <button onclick="createAndSubmitForm()">Створити та надіслати форму пошуку на Google</button>
+            <p><small>Примітка: Ця кнопка створить нову форму та автоматично відправить її до Google для пошуку слова "JavaScript"</small></p>
+        </div>
+    </div>
+
+    <script>
+        // ========== Завдання 1 ==========
+        // Приклад 1-3
+        let N1 = document.getElementById("name1");
+        N1.innerHTML = "My name, <b>Olena</b>";
+        
+        let N2 = document.getElementById("name2");
+        N2.innerText = "My name, <b>Olena</b>";
+        
+        let N3 = document.getElementById("name3");
+        N3.style.color = "blue";
+        N3.style.background = "yellow";
+        N3.textContent = "Стилізований текст";
+        
+        // Приклад 4
+        document.getElementById("new").innerHTML = "New text";
+        
+        // Приклад 5
+        let M1 = document.getElementsByTagName("li");
+        for(let i = 0; i < M1.length; i++) {
+            if (!M1[i].parentElement.classList.contains('L')) {
+                M1[i].style.fontSize = "20px"; // Зменшено з 40px для кращого відображення
+                M1[i].style.color = "#e74c3c";
+            }
+        }
+        
+        // Приклад 6
+        let M2 = document.getElementsByClassName("L");
+        for(let i = 0; i < M2.length; i++) {
+            let items = M2[i].getElementsByTagName("li");
+            for(let j = 0; j < items.length; j++) {
+                items[j].style.fontSize = "20px"; // Зменшено з 40px для кращого відображення
+                items[j].style.color = "#27ae60";
+            }
+        }
+        
+        // ========== Завдання 3 ==========
+        // Функція валідації форми
+        function validateForm(event) {
+            event.preventDefault(); // Запобігаємо стандартній відправці форми
+            
+            const output = document.getElementById("formOutput");
+            output.style.display = "block";
+            
+            // Отримуємо значення з форми
+            const fullName = document.getElementById("fullName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const faculty = document.getElementById("faculty").value;
+            const course = document.querySelector('input[name="course"]:checked');
+            const about = document.getElementById("about").value.trim();
+            const agreement = document.getElementById("agreement").checked;
+            
+            // Валідація
+            let errors = [];
+            
+            if (!fullName) errors.push("Повне ім'я обов'язкове для заповнення");
+            if (!email) errors.push("Електронна пошта обов'язкова для заповнення");
+            if (!phone) errors.push("Телефон обов'язковий для заповнення");
+            if (!faculty) errors.push("Будь ласка, оберіть факультет");
+            if (!course) errors.push("Будь ласка, оберіть курс");
+            if (!agreement) errors.push("Ви повинні погодитися з обробкою персональних даних");
+            
+            if (errors.length > 0) {
+                output.innerHTML = `<div class="error"><strong>Знайдено помилки:</strong><ul>`;
+                errors.forEach(error => {
+                    output.innerHTML += `<li>${error}</li>`;
+                });
+                output.innerHTML += `</ul></div>`;
+                return false;
+            }
+            
+            // Якщо валідація пройшла успішно
+            output.innerHTML = `
+                <div class="success">
+                    <strong>Форму успішно відправлено!</strong>
+                    <p><strong>Дані користувача:</strong></p>
+                    <ul>
+                        <li><strong>Повне ім'я:</strong> ${fullName}</li>
+                        <li><strong>Електронна пошта:</strong> ${email}</li>
+                        <li><strong>Телефон:</strong> ${phone}</li>
+                        <li><strong>Факультет:</strong> ${document.getElementById("faculty").options[document.getElementById("faculty").selectedIndex].text}</li>
+                        <li><strong>Курс:</strong> ${course.value} курс</li>
+                        <li><strong>Про себе:</strong> ${about || "Не вказано"}</li>
+                    </ul>
+                    <p>Форму можна відправити на сервер для подальшої обробки.</p>
+                </div>
+            `;
+            
+            // Симуляція відправки на сервер (в реальності тут був би AJAX запит)
+            setTimeout(() => {
+                const successMessage = output.querySelector('.success');
+                if (successMessage) {
+                    successMessage.innerHTML += `<p><em>Дані успішно збережено!</em></p>`;
+                }
+            }, 1500);
+            
+            return false; // Запобігаємо перезавантаженню сторінки
+        }
+        
+        // Функція очищення форми
+        function clearForm() {
+            document.getElementById("studentForm").reset();
+            document.getElementById("formOutput").style.display = "none";
+        }
+        
+        // Функція показу даних без відправки
+        function showData() {
+            const output = document.getElementById("formOutput");
+            output.style.display = "block";
+            
+            const fullName = document.getElementById("fullName").value.trim() || "Не вказано";
+            const email = document.getElementById("email").value.trim() || "Не вказано";
+            
+            output.innerHTML = `
+                <div>
+                    <strong>Поточні дані форми:</strong>
+                    <ul>
+                        <li><strong>Ім'я:</strong> ${fullName}</li>
+                        <li><strong>Email:</strong> ${email}</li>
+                        <li><strong>Статус:</strong> Форма ще не відправлена</li>
+                    </ul>
+                    <p>Натисніть "Надіслати форму" для валідації та відправки.</p>
+                </div>
+            `;
+        }
+        
+        // Функція створення та відправки форми (приклад з завдання)
+        function createAndSubmitForm() {
+            let form = document.createElement('form');
+            form.action = 'https://www.google.com/search';
+            form.method = 'GET';
+            form.target = '_blank'; // Відкривати результат в новій вкладці
+            form.innerHTML = '<input name="q" value="JavaScript tutorial">';
+            
+            // Форма повинна бути в документі, щоб її надіслати
+            document.body.append(form);
+            form.submit();
+            
+            // Видаляємо форму після відправки
+            setTimeout(() => {
+                form.remove();
+            }, 100);
+        }
+    </script>
+</body>
+</html>
